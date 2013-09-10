@@ -17,7 +17,7 @@ vagrant plugin install pkg/vagrant-plugin-dummy-0.0.2.gem
 Usage
 ==========================
 
-Addd this to a Vagrantfile:
+Add this to a Vagrantfile:
 
 ```
 config.vm.guest :dummy
