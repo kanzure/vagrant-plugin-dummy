@@ -22,3 +22,9 @@ Addd this to a Vagrantfile:
 ```
 config.vm.guest :dummy
 ```
+
+and
+
+```
+config.vm.synced_folder ".", "/vagrant", :disabled => true
+```
