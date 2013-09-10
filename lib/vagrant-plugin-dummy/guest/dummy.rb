@@ -1,6 +1,6 @@
 require "vagrant"
 
-module VagrantDummyPlugin
+module VagrantPluginDummy
   module Guest
     class Dummy < Vagrant.plugin("2", :guest)
 
