@@ -1,0 +1,8 @@
+en:
+  vagrant_plugin_dummy:
+
+    errors:
+      plugin_dummy_error: |-
+        An error has occurred in the VagrantPluginDummy plugin provided by
+        vagrant-plugin-dummy.
+
