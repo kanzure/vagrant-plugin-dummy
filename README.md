@@ -11,7 +11,7 @@ Installing vagrant-plugin-dummy
 ```
 bundle install
 bundle exec rake
-vagrant plugin install pkg/vagrant-plugin-dummy-0.0.1.gem
+vagrant plugin install pkg/vagrant-plugin-dummy-0.0.2.gem
 ```
 
 Usage
