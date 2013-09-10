@@ -1,9 +1,9 @@
-vagrant-guest-dummy
+vagrant-plugin-dummy
 ==========================
 
 This is a "dummy" plugin for vagrant. This is useful if you want to only use vagrant for creating and destroying clean guests.
 
-Installing vagrant-guest-dummy
+Installing vagrant-plugin-dummy
 ==========================
 
 ### Installing from source
@@ -11,7 +11,7 @@ Installing vagrant-guest-dummy
 ```
 bundle install
 bundle exec rake
-vagrant plugin install pkg/vagrant-guest-dummy.gem
+vagrant plugin install pkg/vagrant-plugin-dummy-0.0.1.gem
 ```
 
 Usage
