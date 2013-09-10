@@ -1,7 +1,8 @@
 vagrant-plugin-dummy
 ==========================
 
-This is a "dummy" plugin for vagrant. This is useful if you want to only use vagrant for creating and destroying clean guests.
+This is a "dummy guest" plugin for vagrant. This is useful if you want to only
+use vagrant for creating and destroying clean guests.
 
 Installing vagrant-plugin-dummy
 ==========================
