@@ -1,3 +1,5 @@
+require_relative '../../../communication/communicator'
+
 module Vagrant
   class Machine
 
@@ -8,7 +10,7 @@ module Vagrant
       unless @communicator
         if @config.vm.guest.eql? :dummy
           @logger.info("guest is #{@config.vm.guest}, using no communication channel")
-          @communicator = false
+          @communicator = ::VagrantPluginDummy::Communication::DummyCommunicator.new(self)
         else
           @logger.info("guest is #{@config.vm.guest}, using SSH for communication channel")
           @communicator = ssh_communicate.bind(self).()
