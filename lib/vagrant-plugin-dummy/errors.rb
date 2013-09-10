@@ -9,4 +9,5 @@ module VagrantPluginDummy
     class PluginDummyError < VagrantPluginDummyError
       error_key(:plugin_dummy_error)
     end
+  end
 end
