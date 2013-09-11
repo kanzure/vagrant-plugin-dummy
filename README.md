@@ -4,6 +4,9 @@ vagrant-plugin-dummy
 This is a "dummy guest" plugin for vagrant. This is useful if you want to only
 use vagrant for creating and destroying clean guests.
 
+NOTE: This uses the provider to check if the guest is online before returning
+to vagrant. This check only works with VirtualBox at the moment.
+
 Installing vagrant-plugin-dummy
 ==========================
 
