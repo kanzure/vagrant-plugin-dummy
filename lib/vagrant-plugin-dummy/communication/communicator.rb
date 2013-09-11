@@ -21,7 +21,15 @@ module VagrantPluginDummy
       end
 
       def ready?
-        @logger.warn("Assuming the machine is ready.")
+        @machine = machine
+        @logger.debug("Checking the status of NIC 0")
+        # NOTE: There is no timeout here.  We should probably have one...
+        @nic_0_status = ''
+        while @nic_0_status !~ /Up/ do
+            @nic_0_status = @machine.provider.driver.execute('guestproperty', 'get', @machine.id, '/VirtualBox/GuestInfo/Net/0/Status') || ''
+            @logger.debug("NIC 0 Status: "+ @nic_0_status)
+        end
+
         return true
       end
 
