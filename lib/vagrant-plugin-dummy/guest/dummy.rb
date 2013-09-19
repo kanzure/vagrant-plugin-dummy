@@ -4,7 +4,7 @@ module VagrantPluginDummy
   module Guest
     class Dummy < Vagrant.plugin("2", :guest)
 
-      # Vagrant 1.1.x compatibibility methods
+      # Vagrant 1.1.x compatibility methods
       # Implement the 1.1.x methods and call through to the new 1.2.x capabilities
 
       attr_reader :machine
@@ -38,7 +38,7 @@ module VagrantPluginDummy
         false
       end
 
-      # Vagrant 1.2.x compatibibility methods
+      # Vagrant 1.2.x compatibility methods
 
       def detect?(machine)
         @machine.communicate.test("")
