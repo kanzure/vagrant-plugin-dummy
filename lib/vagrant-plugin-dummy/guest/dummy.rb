@@ -41,7 +41,7 @@ module VagrantPluginDummy
       # Vagrant 1.2.x compatibility methods
 
       def detect?(machine)
-        @machine.communicate.test("")
+        machine.communicate.test("")
       end
     end
   end
