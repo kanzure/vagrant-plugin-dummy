@@ -7,6 +7,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Dummy Guest Support for Vagrant}
   gem.summary       = %q{A small gem that adds dummy guest support to vagrant, basically no vagrant features}
   gem.homepage      = "https://github.com/kanzure/vagrant-plugin-dummy"
+  gem.license       = "BSD"
 
   # The following block of code determines the files that should be included
   # in the gem. It does this by reading all the files in the directory where
