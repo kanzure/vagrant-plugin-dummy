@@ -35,7 +35,8 @@ module VagrantPluginDummy
       end
 
       def configure_networks(networks)
-        false
+        require_relative "guest/cap/configure_networks"
+        VagrantPluginDummy::Guest::Cap::ConfigureNetworks
       end
 
       # Vagrant 1.2.x compatibility methods

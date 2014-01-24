@@ -21,15 +21,40 @@ module VagrantPluginDummy
       end
 
       def ready?
-        @machine = machine
-        @logger.debug("Checking the status of NIC 0")
+        provider = @machine.provider_name.id2name
         # NOTE: There is no timeout here.  We should probably have one...
-        @nic_0_status = ''
-        while @nic_0_status !~ /Up/ do
-            @nic_0_status = @machine.provider.driver.execute('guestproperty', 'get', @machine.id, '/VirtualBox/GuestInfo/Net/0/Status') || ''
-            @logger.debug("NIC 0 Status: "+ @nic_0_status)
+        if provider == 'virtualbox'
+          return ready_virtualbox?
+        elsif provider == 'vmware_workstation'
+          return ready_vmware_workstation?
         end
+      end
 
+      def ready_virtualbox?
+        @logger.debug("Checking the status of NIC 0")
+        nic_0_status = ''
+        while nic_0_status !~ /Up/ do
+          nic_0_status = @machine.provider.driver.execute('guestproperty', 'get', @machine.id, '/VirtualBox/GuestInfo/Net/0/Status') || ''
+          @logger.debug("NIC 0 Status: "+ nic_0_status)
+        end
+        return true
+      end
+
+      def ready_vmware_workstation?
+        @logger.debug("Checking if IP address is assigned")
+        ip = nil
+        while not ip do
+          ip = nil
+          begin
+              resp =  @machine.provider.driver.send(:vmrun, *['getGuestIPAddress', @machine.id])
+          rescue Exception => e
+              @logger.warn(e.message)
+          else
+              m = /(?<ip>\d{1,3}\.\d{1,3}.\d{1,3}\.\d{1,3})/.match(resp.stdout)
+              ip = (resp.exit_code == 0 and m) ? m['ip'] : nil
+          end
+          @logger.debug("Machine IP: #{ip}")
+        end
         return true
       end
 

@@ -36,10 +36,10 @@ module VagrantPluginDummy
 #        VagrantPluginDummy::Guest::Cap::ChangeHostName
 #      end
 #
-#      guest_capability(:windows, :configure_networks) do
-#        require_relative "guest/cap/configure_networks"
-#        VagrantPluginDummy::Guest::Cap::ConfigureNetworks
-#      end
+      guest_capability(:dummy, :configure_networks) do
+        require_relative "guest/cap/configure_networks"
+        VagrantPluginDummy::Guest::Cap::ConfigureNetworks
+      end
 #
 #      guest_capability(:windows, :halt) do
 #        require_relative "guest/cap/halt"
