@@ -25,8 +25,8 @@ module VagrantPluginDummy
         # NOTE: There is no timeout here.  We should probably have one...
         if provider == 'virtualbox'
           return ready_virtualbox?
-        elsif provider == 'vmware_workstation'
-          return ready_vmware_workstation?
+        elsif provider == 'vmware_workstation' or provider == 'vmware_fusion'
+          return ready_vmware?
         end
       end
 
@@ -40,7 +40,7 @@ module VagrantPluginDummy
         return true
       end
 
-      def ready_vmware_workstation?
+      def ready_vmware?
         @logger.debug("Checking if IP address is assigned")
         ip = nil
         while not ip do
