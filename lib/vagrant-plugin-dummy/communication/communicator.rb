@@ -45,10 +45,22 @@ module VagrantPluginDummy
         ip = nil
         while not ip do
           ip = nil
+          # Try to get process list from guest, even with fake credentials
+          # otherwise getGuestIPAddress will not return any value
+          begin
+              @machine.provider.driver.send(:vmrun, *['-gu', 'user',
+                                                      '-gp', 'password',
+                                                      'listProcessesInGuest',
+                                                      @machine.id])
+          rescue Exception => e
+              @logger.warn(e.message)
+          end
+
           begin
               resp =  @machine.provider.driver.send(:vmrun, *['getGuestIPAddress', @machine.id])
           rescue Exception => e
               @logger.warn(e.message)
+              sleep(1)
           else
               m = /(?<ip>\d{1,3}\.\d{1,3}.\d{1,3}\.\d{1,3})/.match(resp.stdout)
               ip = (resp.exit_code == 0 and m) ? m['ip'] : nil
